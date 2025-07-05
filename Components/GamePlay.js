@@ -19,7 +19,7 @@ import LinearGradient from 'react-native-linear-gradient';
 const BG        = require('../assets/splash_bg.png');
 const PLAY_ICON = require('../assets/play_button.png');
 const COLLAGE   = require('../assets/splash_logo.png');
-const CAL_ICON  = require('../assets/calendar.png');
+const CAL_ICON  = require('../assets/calendar1.png');
 const SEVEN_IMG = require('../assets/seven.png');
 const FRUITS = [
   require('../assets/game/apple.png'),
@@ -350,7 +350,7 @@ const styles = StyleSheet.create({
   overlay:{position:'absolute',width:SIZE*0.8,height:SIZE*0.8,left:0,top:0,zIndex:98},
 
   bottom:{flexDirection:'row',alignItems:'center',marginTop:24},
-  cal:{width:24,height:24,tintColor:'#fff',marginRight:8},
+  cal:{width:34,height:34,marginRight:8},
   score:{fontFamily:'Amagro-Bold',fontSize:28,color:'#fff'},
 
   /* WIN overlay */
