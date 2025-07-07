@@ -14,7 +14,6 @@
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		B5AB5E1C04B2D494EE32E46D /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
 		2FCA875A68C94F65991B218E /* Actay-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3411191D1FB440E1845AC1F6 /* Actay-Regular.otf */; };
-		08915212D9CC4B16B643D047 /* Actay-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 261C2D6A93DC4EBBA4C4E24C /* Actay-RegularItalic.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,7 +29,6 @@
 		E2386E8F44904833A222A011 /* Amagro-bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Amagro-bold.ttf"; path = "../assets/fonts/Amagro-bold.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		3411191D1FB440E1845AC1F6 /* Actay-Regular.otf */ = {isa = PBXFileReference; name = "Actay-Regular.otf"; path = "../assets/fonts/Actay-Regular.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		261C2D6A93DC4EBBA4C4E24C /* Actay-RegularItalic.otf */ = {isa = PBXFileReference; name = "Actay-RegularItalic.otf"; path = "../assets/fonts/Actay-RegularItalic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,7 +48,6 @@
 			children = (
 				E2386E8F44904833A222A011 /* Amagro-bold.ttf */,
 				3411191D1FB440E1845AC1F6 /* Actay-Regular.otf */,
-				261C2D6A93DC4EBBA4C4E24C /* Actay-RegularItalic.otf */,
 			);
 			name = Resources;
 			path = "";
@@ -181,7 +178,6 @@
 				B5AB5E1C04B2D494EE32E46D /* PrivacyInfo.xcprivacy in Resources */,
 				71E25572FA9440EE99CDD161 /* Amagro-bold.ttf in Resources */,
 				2FCA875A68C94F65991B218E /* Actay-Regular.otf in Resources */,
-				08915212D9CC4B16B643D047 /* Actay-RegularItalic.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -40,12 +40,30 @@ const rand = n => Math.floor(Math.random() * n);
 const uid  = () => Date.now().toString() + Math.random();
 
 /* ─── board helpers ──────────────────────────────────────────── */
-const genBoard = () =>
-  Array.from({ length: 6 }, (_, r) =>
-    Array.from({ length: 6 }, (_, c) => ({
-      id: uid(), kind: rand(FRUITS.length), row: r, col: c,
-    })),
-  );
+const genBoard = () => {
+    const b = Array.from({ length: 6 }, () => new Array(6));
+    for (let r = 0; r < 6; r++) {
+      for (let c = 0; c < 6; c++) {
+        let kind;
+        do {
+          kind = rand(FRUITS.length);
+          // не даём образоваться трём в ряд по горизонтали
+          if (c >= 2 &&
+              b[r][c-1].kind === kind &&
+              b[r][c-2].kind === kind) continue;
+          // и по вертикали
+          if (r >= 2 &&
+              b[r-1][c].kind === kind &&
+              b[r-2][c].kind === kind) continue;
+          break;
+        } while (true);
+  
+        b[r][c] = { id: uid(), kind, row: r, col: c };
+      }
+    }
+    return b;
+  };
+  
 
 const matches = board => {
   const del = new Set();
@@ -87,11 +105,15 @@ const hasMove = board => {
 };
 
 const ensurePlayableBoard = () => {
-  let b;
-  do { b = genBoard(); } while (!hasMove(b));
-  return b;
-};
-
+    let board;
+    do {
+      board = genBoard();
+      // генерим заново пока:
+      // 1) есть готовые тройки → matches(board).size > 0
+      // 2) нет ни одного возможного хода → !hasMove(board)
+    } while (matches(board).size > 0 || !hasMove(board));
+    return board;
+  };
 const collapse = (b, del) => {
   if (!del.size) return b;
   const copy = b.map(r => r.slice());
@@ -334,7 +356,7 @@ const styles = StyleSheet.create({
   playBtn:{width:width*0.4,height:width*0.4},
   collage:{width:width*0.8,height:width*0.5,marginBottom:80},
 
-  timer:{position:'absolute',top:40,width:280,height:56,borderRadius:28,
+  timer:{position:'absolute',top:60,width:280,height:56,borderRadius:28,
          backgroundColor:'rgba(255,255,255,0.25)',justifyContent:'center',alignItems:'center'},
   timerTxt:{fontFamily:'Amagro-Bold',fontSize:30,color:'#fff'},
 
