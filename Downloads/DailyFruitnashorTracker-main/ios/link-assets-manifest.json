@@ -1,0 +1,13 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/Actay-Regular.otf",
+      "sha1": "8bc286a67f4a7028d62be19a0a5ee70e7317493c"
+    },
+    {
+      "path": "assets/fonts/Amagro-bold.ttf",
+      "sha1": "45e4d48c797389cf197abbba5fd22fcfd5253fdc"
+    }
+  ]
+}
