@@ -9,7 +9,7 @@ workflows:
         distribution_type: app_store
         bundle_identifier: com.DailyFruitnashorTracker
       vars:
-        APP_STORE_APPLE_ID: 6748040797
+        APP_STORE_APPLE_ID: 6748346534
         BUNDLE_ID: 'com.DailyFruitnashorTracker'
         XCODE_WORKSPACE: 'DailyFruitnashorTracker.xcworkspace'
         CODE_SCHEME: 'DailyFruitnashorTracker'
