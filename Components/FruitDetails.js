@@ -179,11 +179,7 @@ export default function FruitDetails() {
   const toggle = v => setTried(prev => ({ ...prev, [fruit.id]: v }));
 
   const openSource = () => {
-    if (fruit.source) {
-      Linking.openURL(fruit.source).catch(err =>
-        console.warn('Cannot open URL:', err),
-      );
-    }
+    if (fruit.source) Linking.openURL(fruit.source).catch(console.warn);
   };
 
   return (
@@ -218,9 +214,12 @@ export default function FruitDetails() {
             <Text key={i} style={styles.property}>• {p}</Text>
           ))}
 
-          {/* clickable link in the same style/position as properties */}
-          <Text style={styles.sourceLink} onPress={openSource}>
-            • {fruit.source}
+          {/* information source line */}
+          <Text style={styles.property}>
+            • Information source:{' '}
+            <Text style={styles.link} onPress={openSource}>
+              USDA FoodData Central&nbsp;↗
+            </Text>
           </Text>
         </ScrollView>
 
@@ -249,12 +248,8 @@ const styles = StyleSheet.create({
   switchTrack: { width:66, height:30, borderRadius:15, backgroundColor:'#fff', padding:2 },
   switchThumb: { width:36, height:26, borderRadius:13 },
 
-  sourceLink: {
-    color:'#6cf',                 // blue-ish to hint it’s clickable
-    fontSize:14,
-    lineHeight:20,
-    marginBottom:8,
-    paddingLeft:8,
+  link: {
+    color:'#6cf',
     textDecorationLine:'underline',
   },
 });
