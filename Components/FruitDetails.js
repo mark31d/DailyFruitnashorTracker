@@ -1,3 +1,4 @@
+// Components/FruitDetails.js
 import React, { useContext, useRef, useEffect } from 'react';
 import {
   View,
@@ -11,7 +12,7 @@ import {
   ImageBackground,
   Animated,
   TouchableWithoutFeedback,
-  Linking,                    // ← stays
+  Linking,
 } from 'react-native';
 import { useRoute, useNavigation } from '@react-navigation/native';
 import { TriedContext } from '../Components/TriedContext';
@@ -63,7 +64,7 @@ const FRUITS = [
     name: 'Persimmon',
     img: require('../assets/fruits/persimmon.png'),
     description:
-      'Persimmon is a sweet and juicy orange–colored fruit, especially popular in autumn and winter. There are tart and non-tart varieties. The tartness disappears after freezing or full ripening. The persimmon pulp has a delicate, honey-like taste.',
+      'Persimmon is a sweet and juicy orange–colored fruit, especially popular in autumn and winter. There are tart and non-tart varieties. The tartness disappears after freezing or full ripening.',
     properties: [
       'Source of vitamin A: Supports healthy eyesight and skin.',
       'Rich in antioxidants: Protects cells from free-radical damage.',
@@ -78,11 +79,11 @@ const FRUITS = [
     name: 'Pomegranate',
     img: require('../assets/fruits/pomegranate.png'),
     description:
-      'Pomegranate is a fruit with a dense skin and many juicy arils inside. It has a sweet-and-tart flavour.',
+      'Pomegranate has a thick rind and many juicy arils with a sweet-tart flavour.',
     properties: [
       'Rich in antioxidants (punicalagins): Protects against oxidative stress.',
       'Contains vitamin C: Supports immunity and skin health.',
-      'Potassium source: Aids blood-pressure regulation.',
+      'Good potassium source: Aids blood-pressure regulation.',
       'Improves blood circulation: Promotes heart health.',
       'Provides iron: Helps prevent anaemia.',
     ],
@@ -93,7 +94,7 @@ const FRUITS = [
     name: 'Melon',
     img: require('../assets/fruits/melon.png'),
     description:
-      'Melon is a juicy, sweet summer fruit with tender flesh and refreshing taste.',
+      'Melon is a juicy, sweet summer fruit with tender flesh and a refreshing taste.',
     properties: [
       'Source of vitamin C: Supports immune function.',
       'Contains potassium: Important for heart and muscle function.',
@@ -108,7 +109,7 @@ const FRUITS = [
     name: 'Grapefruit',
     img: require('../assets/fruits/grapefruit.png'),
     description:
-      'Grapefruit is a citrus fruit with a distinct sweet-and-tart flavour and refreshing aroma.',
+      'Grapefruit is a citrus fruit with a distinctive sweet-tart flavour and refreshing aroma.',
     properties: [
       'High in vitamin C: Boosts immune defence.',
       'Contains antioxidants (lycopene, naringenin): Protects cells.',
@@ -126,7 +127,7 @@ const FRUITS = [
       'Orange is a juicy, sweet citrus fruit renowned for its vitamin C content.',
     properties: [
       'Excellent vitamin C source: Strengthens immunity.',
-      'Contains antioxidants: Helps counteract free-radical damage.',
+      'Contains antioxidants: Counters free-radical damage.',
       'Improves skin appearance: Thanks to vitamin C and flavonoids.',
       'Pectin may assist in lowering cholesterol.',
       'Provides vitamin A: Contributes to eye health.',
@@ -138,10 +139,10 @@ const FRUITS = [
     name: 'Apple',
     img: require('../assets/fruits/apple.png'),
     description:
-      'Apple is one of the most popular fruits worldwide, available in many varieties and flavours.',
+      'Apple is one of the most popular fruits worldwide, with many varieties and flavours.',
     properties: [
       'Rich in fibre: Supports digestion and cholesterol control.',
-      'Contains vitamin C: Supports immune system.',
+      'Contains vitamin C: Supports the immune system.',
       'Provides antioxidants (quercetin): Neutralises free radicals.',
       'Low calorie, high fibre: Aids weight control.',
       'May benefit heart health: Linked to lower cardiovascular risk.',
@@ -168,9 +169,9 @@ const FRUITS = [
 /* ───────── main component ───────── */
 export default function FruitDetails() {
   const { tried, setTried } = useContext(TriedContext);
-
   const route = useRoute();
   const nav   = useNavigation();
+
   const { fruitId } = route.params;
   const fruit = FRUITS.find(f => f.id === fruitId) || FRUITS[0];
 
@@ -189,7 +190,7 @@ export default function FruitDetails() {
     <ImageBackground source={BG} style={styles.root} resizeMode="cover">
       <SafeAreaView style={styles.safe}>
 
-        {/* Header */}
+        {/* header */}
         <View style={styles.header}>
           <Text style={styles.title}>{fruit.name.toUpperCase()}</Text>
           <TouchableOpacity onPress={() => nav.goBack()} style={styles.backBtn}>
@@ -197,7 +198,7 @@ export default function FruitDetails() {
           </TouchableOpacity>
         </View>
 
-        {/* Image + Switch */}
+        {/* image + switch */}
         <View style={styles.imgWrap}>
           <Image source={fruit.img} style={styles.image} />
           <CustomSwitch
@@ -207,7 +208,7 @@ export default function FruitDetails() {
           />
         </View>
 
-        {/* Details */}
+        {/* details */}
         <ScrollView
           style={styles.scroll}
           contentContainerStyle={{ paddingBottom: 32 }}>
@@ -217,10 +218,10 @@ export default function FruitDetails() {
             <Text key={i} style={styles.property}>• {p}</Text>
           ))}
 
-          {/* Official source button */}
-          <TouchableOpacity style={styles.sourceBtn} onPress={openSource}>
-            <Text style={styles.sourceTxt}>Resource</Text>
-          </TouchableOpacity>
+          {/* clickable link in the same style/position as properties */}
+          <Text style={styles.sourceLink} onPress={openSource}>
+            • {fruit.source}
+          </Text>
         </ScrollView>
 
       </SafeAreaView>
@@ -248,13 +249,12 @@ const styles = StyleSheet.create({
   switchTrack: { width:66, height:30, borderRadius:15, backgroundColor:'#fff', padding:2 },
   switchThumb: { width:36, height:26, borderRadius:13 },
 
-  sourceBtn:   {
-    marginTop:24,
-    alignSelf:'center',
-    backgroundColor:'#FFF',
-    paddingVertical:20,
-    paddingHorizontal:25,
-    borderRadius:12,
+  sourceLink: {
+    color:'#6cf',                 // blue-ish to hint it’s clickable
+    fontSize:14,
+    lineHeight:20,
+    marginBottom:8,
+    paddingLeft:8,
+    textDecorationLine:'underline',
   },
-  sourceTxt:   { fontSize:25, fontFamily:'Amagro-Bold', color:'#611' },
 });
